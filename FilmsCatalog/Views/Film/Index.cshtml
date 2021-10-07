@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Linq;
+@inject SignInManager<User> SignInManager
+@model FilmsViewModel
+@{ ViewData["Title"] = "Список доступных фильмов";
+    int previousPageIndex = Model.PageIndex - 1;
+    int pageIndex = Model.PageIndex;
+    int nextPageIndex = Model.PageIndex + 1;
+    int pageSize = (int)Model.PageSize;
+    int pageCount = Model.PageCount;
+    bool hasItems = Model.Films.Any();
+    bool isSignIn = SignInManager.IsSignedIn(User);}
+@if (isSignIn) { 
+    <div>
+        <a></a>
+    </div>
+}
+
+@if (isSignIn)
+{
+<div>
+    <a class="btn btn-success text-white float-right" asp-controller="Film" asp-action="CreateFilm"> Добавить новый фильм </a>
+</div>}
